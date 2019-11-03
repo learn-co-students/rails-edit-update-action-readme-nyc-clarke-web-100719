@@ -28,7 +28,7 @@ that accepts an `:id` as a parameter that the controller can access:
 get 'articles/:id/edit', to: 'articles#edit', as: :edit_article
 ```
 
-We still need to draw one additional route to handle the `update` action. This
+We still neeed to draw one additional route to handle the `update` action. This
 second route will also need to be dynamic, accepting the same `:id` as a
 parameter so that the action will know which record is being altered. If you're
 curious about which HTTP verb should be selected, consider the following: we're
