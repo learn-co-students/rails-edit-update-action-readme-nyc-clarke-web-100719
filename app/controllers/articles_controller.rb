@@ -1,10 +1,12 @@
 class ArticlesController < ApplicationController
+  before_action :set_article, only: [:show, :edit]
+
   def index
     @articles = Article.all
   end
 
   def show
-    @article = Article.find(params[:id])
+    # @article = Article.find(params[:id])
   end
 
   def new
@@ -16,8 +18,29 @@ class ArticlesController < ApplicationController
     @article.title = params[:title]
     @article.description = params[:description]
     @article.save
+
     redirect_to article_path(@article)
   end
 
   # add edit and update methods here
+
+  def edit
+    # raise params.inspect
+    # @article = Article.find(params[:id])
+    # redirect_to article_path(@article)
+    render :edit
+  end
+
+  def update
+    @article = Article.find(params[:id])
+    @article.update(title: params[:article][:title], description: params[:article][:description])
+    redirect_to article_path(@article)
+  end
+
+  private
+
+  def set_article
+    @article = Article.find(params[:id])
+  end
+
 end
